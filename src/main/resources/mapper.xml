@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+    <select id="selectOne" parameterType="com.pojo.User" resultType="com.pojo.User">
+        select * from t_user where cid = #{cid}
+    </select>
+    
+    <select id="selectList"  resultType="com.pojo.User">
+        select * from t_user
+    </select>
+
+    <update id="update" parameterType="com.pojo.User">
+        update t_user set username = #{username}, password= #{password},birthday = #{birthday} where id =#{id}
+    </update>
+
+    <insert id="insert" parameterType="com.pojo.User">
+        insert into t_user(username,password,birthday) values (#{username},#{password},#{birthday})
+    </insert>
+
+    <delete id="deleteByCid" parameterType="java.lang.Integer">
+        delete from t_user where id =#{id}
+    </delete>
+</mapper>
